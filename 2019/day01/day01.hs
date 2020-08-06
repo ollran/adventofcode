@@ -1,8 +1,10 @@
+module Main where
+
+-- Day 1: The Tyranny of the Rocket Equation
 import Data.Maybe (catMaybes)
 import System.IO (IOMode(ReadMode), hClose, hGetContents, openFile)
 import Text.Read (readMaybe)
 
--- Day 1: The Tyranny of the Rocket Equation
 -- Part 1
 calculateFuel :: Int -> Int
 calculateFuel = (flip (-) 2) . (flip div 3)
