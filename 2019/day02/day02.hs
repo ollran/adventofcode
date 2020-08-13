@@ -15,14 +15,14 @@ split p s =
   case dropWhile p s of
     "" -> []
     s' -> w : split p s''
-  where
-    (w, s'') = break p s'
+      where
+        (w, s'') = break p s'
 
 getOperation :: Int -> IntCodes -> Maybe (Int -> Int -> Int)
 getOperation index codes =
   case IntMap.lookup index codes of
-    1 -> Just (+)
-    2 -> Just (*)
+    Just 1 -> Just (+)
+    Just 2 -> Just (*)
     _ -> Nothing
 
 getInputValues :: Int -> IntCodes -> Maybe (Int, Int)
