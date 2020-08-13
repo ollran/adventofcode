@@ -78,7 +78,7 @@ part01 layers =
    in putStrLn . show $
       (countLayerDigits 1 targetLayer) * (countLayerDigits 2 targetLayer)
 
--- Day 2
+-- Part 2
 initialDecodedImage :: DecodedImage
 initialDecodedImage = replicate imageHeight $ replicate imageWidth Transparent
 
@@ -111,7 +111,7 @@ renderColor White = ' '
 renderColor _ = '_'
 
 renderImage :: DecodedImage -> String
-renderImage decodedImage = intercalate "\n" (map (f []) decodedImage)
+renderImage decodedImage = intercalate "\n" $ map (f []) decodedImage
   where
     f :: String -> DecodedImageLayer -> String
     f renderedImage [] = renderedImage
@@ -124,7 +124,7 @@ main :: IO ()
 main = do
   handle <- openFile "input.txt" ReadMode
   contents <- hGetContents handle
-  let input = imageToLayers . map (digitToInt) . head . lines $ contents
+  let input = imageToLayers . map digitToInt . head . lines $ contents
   part01 input
   part02 input
   hClose handle
